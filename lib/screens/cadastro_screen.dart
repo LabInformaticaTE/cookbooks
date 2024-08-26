@@ -1,39 +1,15 @@
+import 'package:cookbooks/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:cookbooks/utils/database_helper.dart';
-import 'package:cookbooks/screens/home_screen.dart';
-import 'cadastro_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class CadastroScreen extends StatefulWidget {
+  const CadastroScreen({super.key});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _CadastroScreenState createState() => _CadastroScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final DatabaseHelper _dbHelper = DatabaseHelper();
-
-  void _login() async {
-    String username = _usernameController.text;
-    String password = _passwordController.text;
-
-    var user = await _dbHelper.getUser(username, password);
-
-    if (user != null) {
-      // Se o login for bem-sucedido, navegue para a tela inicial
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeScreen(userName: '',)),
-      );
-    } else {
-      // Se o login falhar, exiba uma mensagem de erro
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Usuário ou senha incorretos')),
-      );
-    }
-  }
+class _CadastroScreenState extends State<CadastroScreen> {
+  String? _selectedTurno;
 
   @override
   Widget build(BuildContext context) {
@@ -52,29 +28,32 @@ class _LoginScreenState extends State<LoginScreen> {
           SingleChildScrollView(
             child: Column(
               children: [
-                Center(
-                  child: Container(
-                    width: 200.0,
-                    height: 200.0,
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(100.0),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100.0),
-                      child: Image.asset(
-                        'assets/images/icons/logo_cookbooks.png',
-                        fit: BoxFit.cover,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.35,
+                  child: Center(
+                    child: Container(
+                      width: 200.0,  // Ajuste para o tamanho do container circular
+                      height: 200.0, // Mantendo o tamanho proporcional para o círculo
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(100.0),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100.0),
+                        child: Image.asset(
+                          'assets/images/icons/logo_cookbooks.png',
+                          fit: BoxFit.contain, // Ajuste o logo dentro do círculo
+                        ),
                       ),
                     ),
                   ),
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.35,
+                  height: MediaQuery.of(context).size.height * 0.25,
                   width: double.infinity,
                   child: Center(
                     child: Text(
-                      'Login',
+                      'Cadastro',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 60.0,
@@ -85,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Shadow(
                             blurRadius: 10.0,
                             color: Colors.grey.withOpacity(0.5),
-                            offset: Offset(5.0, 5.0),
+                            offset: const Offset(5.0, 5.0),
                           ),
                         ],
                       ),
@@ -100,31 +79,62 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(80)
+                      topLeft: Radius.circular(80),
                     ),
                   ),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      TextField(
-                        controller: _usernameController,
-                        decoration: const InputDecoration(
-                          labelText: 'Usuário',
+                      const TextField(
+                        decoration: InputDecoration(
+                          labelText: 'Nome Completo',
                           prefixIcon: Icon(Icons.person),
                         ),
                       ),
                       const SizedBox(height: 20),
-                      TextField(
-                        controller: _passwordController,
-                        decoration: const InputDecoration(
+                      const TextField(
+                        decoration: InputDecoration(
+                          labelText: 'E-mail',
+                          prefixIcon: Icon(Icons.email),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      const TextField(
+                        decoration: InputDecoration(
                           labelText: 'Senha',
                           prefixIcon: Icon(Icons.lock),
                         ),
                         obscureText: true,
                       ),
+                      const SizedBox(height: 20),
+                      DropdownButtonFormField<String>(
+                        value: _selectedTurno,
+                        decoration: const InputDecoration(
+                          labelText: 'Turno',
+                          prefixIcon: Icon(Icons.schedule),
+                        ),
+                        items: const [
+                          DropdownMenuItem(
+                            value: 'manhã',
+                            child: Text('Manhã'),
+                          ),
+                          DropdownMenuItem(
+                            value: 'tarde',
+                            child: Text('Tarde'),
+                          ),
+                        ],
+                        onChanged: (value) {
+                          setState(() {
+                            _selectedTurno = value;
+                          });
+                        },
+                      ),
                       const SizedBox(height: 30),
                       ElevatedButton(
-                        onPressed: _login,
-                        child: const Text('Entrar'),
+                        onPressed: () {
+                          // Adicione a funcionalidade de cadastro aqui
+                        },
+                        child: const Text('Cadastrar'),
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 100, vertical: 15),
@@ -139,11 +149,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const CadastroScreen()),
+                            MaterialPageRoute(builder: (context) => const LoginScreen()),
                           );
                         },
                         child: const Text(
-                          'Ainda não tem uma conta? Clique aqui e inscreva-se',
+                          'Já tem uma conta? Faça login',
                           style: TextStyle(color: Colors.blue),
                         ),
                       ),
