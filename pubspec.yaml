@@ -67,9 +67,9 @@ flutter:
 
   assets:
     - assets/images/backgrounds/background_cookbooks.png
-    - assets/images/icons/logo_culinaria.png
-    - assets/images/icons/logo_cookbooks.png
-    - assets/images/icons/logo_informatica.png
+    - assets/images/logos/logo_culinaria_criativa.png
+    - assets/images/logos/logo_cookbooks.png
+    - assets/images/logos/logo_lab_informatica.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
