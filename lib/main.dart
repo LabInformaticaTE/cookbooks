@@ -28,6 +28,156 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  void _showLoginBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true, // Permite o bottom sheet expandir para ocupar mais espaço
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+            top: 20.0,
+            left: 20.0,
+            right: 20.0,
+          ),
+          child: Wrap(
+            children: [
+              Center(
+                child: Text(
+                  'Fazer login',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Satisfy',
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 10),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Senha',
+                  border: OutlineInputBorder(),
+                ),
+                obscureText: true,
+              ),
+              SizedBox(height: 20),
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 60.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Lógica de autenticação aqui
+                        },
+                        child: Text('Entrar'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Lógica de autenticação aqui
+                        },
+                        child: Text('Sair'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _showCadastroBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true, // Permite o bottom sheet expandir para ocupar mais espaço
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+            top: 20.0,
+            left: 20.0,
+            right: 20.0,
+          ),
+          child: Wrap(
+            children: [
+              Center(
+                child: Text(
+                  'Cadastro',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Nome Completo',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 10),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 10),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Senha',
+                  border: OutlineInputBorder(),
+                ),
+                obscureText: true,
+              ),
+              SizedBox(height: 20),
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 60.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Lógica de autenticação aqui
+                        },
+                        child: Text('Cadastrar'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Lógica de autenticação aqui
+                        },
+                        child: Text('Sair'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +189,10 @@ class _HomeState extends State<Home> {
               image: AssetImage(
                   'assets/images/backgrounds/background_cookbooks.png'),
               fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.5), // Define a cor e o nível de transparência
+                BlendMode.srcATop, // Define como a cor deve ser aplicada à imagem
+              ),
             ),
           ),
           child: Center(
@@ -57,7 +211,7 @@ class _HomeState extends State<Home> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100.0),
                         child: Image.asset(
-                          'images/logos/logo_cookbooks.png',
+                          'assets/images/logos/logo_cookbooks.png',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -77,6 +231,14 @@ class _HomeState extends State<Home> {
                             fontSize: 80.0,
                             fontFamily: 'Satisfy',
                             fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                offset: Offset(4.0, 4.0),
+                                blurRadius: 10.0,
+                                color: Colors.black.withOpacity(0.5),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -87,12 +249,9 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
-                      onPressed: () {
-                        // Lógica para a Splash Screen de Login
-                        print('Botão de Login pressionado');
-                      },
+                      onPressed: _showLoginBottomSheet,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white, // Cor do botão
+                        backgroundColor: Colors.white,
                         padding: EdgeInsets.symmetric(horizontal: 60, vertical: 15),
                       ),
                       child: Text(
@@ -106,12 +265,9 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () {
-                        // Lógica para a Splash Screen de Cadastro
-                        print('Botão de Cadastro pressionado');
-                      },
+                      onPressed: _showCadastroBottomSheet,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white, // Cor do botão
+                        backgroundColor: Colors.white,
                         padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                       ),
                       child: Text(
@@ -143,7 +299,7 @@ class _HomeState extends State<Home> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(100.0),
                         child: Image.asset(
-                          'images/logos/logo_lab_informatica.png',
+                          'assets/images/logos/logo_lab_informatica.png',
                           fit: BoxFit.cover,
                           width: 50,
                           height: 50,
