@@ -59,7 +59,7 @@ class _HomeState extends State<Home> {
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Senha',
@@ -73,25 +73,84 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 60.0),
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
                       child: ElevatedButton(
                         onPressed: () {
                           // Lógica de autenticação aqui
                         },
-                        child: Text('Entrar'),
+                        child: Text(
+                            'Entrar',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            fontFamily: 'Satisfy',
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width * 0.1,
+                            vertical: 15,
+                          ),
+                        ),
                       ),
                     ),
+                    SizedBox(width: 20), // Adiciona espaço entre os botões
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
                       child: ElevatedButton(
                         onPressed: () {
-                          // Lógica de autenticação aqui
+                          // Lógica de sair aqui
                         },
-                        child: Text('Sair'),
+                        child: Text(
+                            'Sair',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            fontFamily: 'Satisfy',
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width * 0.1,
+                            vertical: 15,
+                          ),
+                        ),
                       ),
                     ),
                   ],
                 ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Lógica de sair aqui
+                        },
+                        child: Text(
+                            'Esqueceu sua senha? Recupere aqui',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            fontFamily: 'Satisfy',
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width * 0.1,
+                            vertical: 15,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -116,10 +175,11 @@ class _HomeState extends State<Home> {
             children: [
               Center(
                 child: Text(
-                  'Cadastro',
+                  'Cadastre seu usuário',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Satisfy',
                   ),
                 ),
               ),
@@ -130,14 +190,14 @@ class _HomeState extends State<Home> {
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Email',
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Senha',
@@ -151,21 +211,50 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 60.0),
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
                       child: ElevatedButton(
                         onPressed: () {
-                          // Lógica de autenticação aqui
+                          // Lógica de cadastro aqui
                         },
-                        child: Text('Cadastrar'),
+                        child: Text(
+                            'Cadastrar',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            fontFamily: 'Satisfy',
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width * 0.1,
+                            vertical: 15,
+                          ),
+                        ),
                       ),
                     ),
+                    SizedBox(width: 20), // Adiciona espaço entre os botões
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
                       child: ElevatedButton(
                         onPressed: () {
-                          // Lógica de autenticação aqui
+                          // Lógica de sair aqui
                         },
-                        child: Text('Sair'),
+                        child: Text(
+                            'Sair',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            fontFamily: 'Satisfy',
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width * 0.1,
+                            vertical: 15,
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -202,8 +291,8 @@ class _HomeState extends State<Home> {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(20.0),
-                      width: 300.0,
-                      height: 300.0,
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      height: MediaQuery.of(context).size.width * 0.6,
                       decoration: BoxDecoration(
                         color: Colors.transparent,
                         borderRadius: BorderRadius.circular(100.0),
@@ -252,7 +341,10 @@ class _HomeState extends State<Home> {
                       onPressed: _showLoginBottomSheet,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(horizontal: 60, vertical: 15),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width * 0.1,
+                          vertical: 15,
+                        ),
                       ),
                       child: Text(
                         'Login',
@@ -268,7 +360,10 @@ class _HomeState extends State<Home> {
                       onPressed: _showCadastroBottomSheet,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width * 0.1,
+                          vertical: 15,
+                        ),
                       ),
                       child: Text(
                         'Cadastro',
@@ -290,7 +385,7 @@ class _HomeState extends State<Home> {
                       Text(
                         'Desenvolvido por:',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0,
                           fontFamily: 'Satisfy',
@@ -301,9 +396,19 @@ class _HomeState extends State<Home> {
                         child: Image.asset(
                           'assets/images/logos/logo_lab_informatica.png',
                           fit: BoxFit.cover,
-                          width: 50,
-                          height: 50,
-                          color: Colors.black,
+                          color: Colors.white,
+                          width: 60,
+                          height: 60,
+                        ),
+                      ),
+                      SizedBox(height: 10.0),
+                      Text(
+                          'Laboratório de informática do TE',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                          fontFamily: 'Satisfy',
                         ),
                       ),
                     ],
