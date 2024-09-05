@@ -271,150 +271,152 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-          padding: const EdgeInsets.all(20.0),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                  'assets/images/backgrounds/background_cookbooks.png'),
-              fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.5), // Define a cor e o nível de transparência
-                BlendMode.srcATop, // Define como a cor deve ser aplicada à imagem
+        child: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(20.0),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                    'assets/images/backgrounds/background_cookbooks.png'),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.5), // Define a cor e o nível de transparência
+                  BlendMode.srcATop, // Define como a cor deve ser aplicada à imagem
+                ),
               ),
             ),
-          ),
-          child: Center(
-            child: Column(
-              children: [
-                Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(20.0),
-                      width: MediaQuery.of(context).size.width * 0.6,
-                      height: MediaQuery.of(context).size.width * 0.6,
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(100.0),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100.0),
-                        child: Image.asset(
-                          'assets/images/logos/logo_cookbooks.png',
-                          fit: BoxFit.cover,
+            child: Center(
+              child: Column(
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(20.0),
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        height: MediaQuery.of(context).size.width * 0.6,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(100.0),
                         ),
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.35,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(100.0),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "CookBook's",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 80.0,
-                            fontFamily: 'Satisfy',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            shadows: [
-                              Shadow(
-                                offset: Offset(4.0, 4.0),
-                                blurRadius: 10.0,
-                                color: Colors.black.withOpacity(0.5),
-                              ),
-                            ],
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100.0),
+                          child: Image.asset(
+                            'assets/images/logos/logo_cookbooks.png',
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(
-                      onPressed: _showLoginBottomSheet,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.1,
-                          vertical: 15,
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.35,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(100.0),
                         ),
-                      ),
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                          fontFamily: 'Satisfy',
-                        ),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _showCadastroBottomSheet,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.1,
-                          vertical: 15,
-                        ),
-                      ),
-                      child: Text(
-                        'Cadastro',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                          fontFamily: 'Satisfy',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.all(60),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Desenvolvido por:',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                          fontFamily: 'Satisfy',
-                        ),
-                      ),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(100.0),
-                        child: Image.asset(
-                          'assets/images/logos/logo_lab_informatica.png',
-                          fit: BoxFit.cover,
-                          color: Colors.white,
-                          width: 60,
-                          height: 60,
-                        ),
-                      ),
-                      SizedBox(height: 10.0),
-                      Text(
-                          'Laboratório de informática do TE',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                          fontFamily: 'Satisfy',
+                        child: Center(
+                          child: Text(
+                            "CookBook's",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 80.0,
+                              fontFamily: 'Satisfy',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              shadows: [
+                                Shadow(
+                                  offset: Offset(4.0, 4.0),
+                                  blurRadius: 10.0,
+                                  color: Colors.black.withOpacity(0.5),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
-                ),
-              ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        onPressed: _showLoginBottomSheet,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width * 0.1,
+                            vertical: 15,
+                          ),
+                        ),
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            fontFamily: 'Satisfy',
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: _showCadastroBottomSheet,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width * 0.1,
+                            vertical: 15,
+                          ),
+                        ),
+                        child: Text(
+                          'Cadastro',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            fontFamily: 'Satisfy',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(60),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Desenvolvido por:',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                            fontFamily: 'Satisfy',
+                          ),
+                        ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(100.0),
+                          child: Image.asset(
+                            'assets/images/logos/logo_lab_informatica.png',
+                            fit: BoxFit.cover,
+                            color: Colors.white,
+                            width: 60,
+                            height: 60,
+                          ),
+                        ),
+                        SizedBox(height: 10.0),
+                        Text(
+                          'Laboratório de informática do TE',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                            fontFamily: 'Satisfy',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
