@@ -3,7 +3,11 @@ plugins {
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
+    // Adicionado recentemente
+    id 'com.google.gms.google-services' version '4.4.2'
 }
+
+
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file("local.properties")
@@ -51,6 +55,20 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+}
+
+dependencies {
+    // Import the Firebase BoM (Bill of Materials) para gerenciar as versões das dependências Firebase
+    implementation platform('com.google.firebase:firebase-bom:33.2.0')
+
+    // Firebase Analytics
+    implementation 'com.google.firebase:firebase-analytics'
+
+    // Firebase Authentication
+    implementation 'com.google.firebase:firebase-auth'
+
+    // Firebase Firestore
+    implementation 'com.google.firebase:firebase-firestore'
 }
 
 flutter {
