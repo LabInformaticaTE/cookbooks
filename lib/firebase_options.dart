@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'cookbooksapp-8ef1c.appspot.com',
     measurementId: 'G-59MNJVF9X0',
   );
+
 }

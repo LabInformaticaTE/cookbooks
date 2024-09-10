@@ -63,6 +63,16 @@ class _HomeState extends State<Home> {
 
   //Função para login
   Future<void> _login() async{
+    //Verificando se a conexão com a internet
+    bool isConnected = await _isConnected();
+
+    if (!isConnected) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Sem conexão com a internet')),
+      );
+      return;
+    }
+
     // Verificando se os campos estão vazios
     if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -96,6 +106,16 @@ class _HomeState extends State<Home> {
 
   //Função para cadastro
   Future<void> _signUp() async{
+    // Verificando se há conexão com a internet
+    bool isConnected = await _isConnected();
+
+    if (!isConnected) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Sem conexão com a internet')),
+      );
+      return;
+    }
+
     // Verificando se os campos estão vazios
     if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
